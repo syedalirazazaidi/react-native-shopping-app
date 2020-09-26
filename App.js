@@ -12,9 +12,15 @@ import MenuBar from './src/app/components/menuBar';
 import SearchBar from './src/app/components/SearchBar';
 import color from './src/app/assets/Constants/colors';
 import NikeStore from './src/app/screens/NikeStore';
+import {Provider} from '@reduxjs/toolkit';
+import {store} from './src/app/redux/store/store';
+import AppNavigator from './src/app/navigation/AppNavigator';
+import {NavigationContainer} from '@react-navigation/native';
+console.log(store);
 const App = () => {
   return (
     <>
+      {/* <Provider> */}
       <SafeAreaView style={styles.container}>
         <MenuBar />
         <SearchBar />
@@ -37,7 +43,12 @@ const App = () => {
         <ScrollView style={styles.image}>
           <NikeStore />
         </ScrollView>
+        <NavigationContainer>
+          <AppNavigator />
+        </NavigationContainer>
+        <Text>Hi</Text>
       </SafeAreaView>
+      {/* </Provider> */}
     </>
   );
 };

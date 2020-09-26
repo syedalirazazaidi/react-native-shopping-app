@@ -25,6 +25,7 @@ const CartItems = () => {
     <View style={styles.container}>
       <Text style={styles.text}>My Bag</Text>
       <Text style={styles.txt}>Check and Play Your Shoes</Text>
+      <Text>Item in the Cart</Text>
     </View>
   );
 };
