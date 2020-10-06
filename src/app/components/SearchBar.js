@@ -5,7 +5,7 @@ import color from '../assets/Constants/colors';
 export default function SearchBar() {
   return (
     <View style={styles.container}>
-      <TextInput placeholder="Find shoes" style={styles.textInput} />
+      <TextInput style={styles.textInput} placeholder="Find shoes" />
       <Icon style={styles.icon} name="search" size={39} />
     </View>
   );
@@ -16,7 +16,6 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     paddingTop: 60,
     justifyContent: 'space-between',
-    // padding: 15,
     flexDirection: 'row',
   },
 

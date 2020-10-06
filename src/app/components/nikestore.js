@@ -14,7 +14,9 @@ const NikeComponent = ({item}) => {
   let [click, setClick] = React.useState(false);
 
   let [cart, addToCart] = React.useState([]);
-  const onPress = () => setClick(true);
+  addToCart = (item) => {
+    addToCart([...cart, item]);
+  };
 
   return (
     <View style={styles.container}>
@@ -31,11 +33,10 @@ const NikeComponent = ({item}) => {
           $
         </Text>
         {item.price}
-        {console.log({cart})}
         <View>
           <TouchableOpacity
             style={styles.button}
-            onPress={() => addToCart(item.id)}>
+            onPress={() => addToCart(console.log(item))}>
             <Icon
               style={{marginLeft: 60, marginTop: 10, color: 'red'}}
               name="hearto"
@@ -44,6 +45,7 @@ const NikeComponent = ({item}) => {
           </TouchableOpacity>
         </View>
       </Text>
+      {/* <Text>{cart}</Text> */}
       <Image
         style={{width: 180, height: 150, marginTop: 20}}
         source={item.photo}
@@ -57,7 +59,7 @@ export default NikeComponent;
 const styles = StyleSheet.create({
   container: {
     borderRadius: 12,
-    backgroundColor: color.white,
+    // backgroundColor: color.white,
     elevation: 5,
   },
   text: {

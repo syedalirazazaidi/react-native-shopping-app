@@ -14,41 +14,23 @@ import color from './src/app/assets/Constants/colors';
 import NikeStore from './src/app/screens/NikeStore';
 import {Provider} from '@reduxjs/toolkit';
 import {store} from './src/app/redux/store/store';
-import AppNavigator from './src/app/navigation/AppNavigator';
+import TabNavigator from './src/app/navigation/AppNavigator';
 import {NavigationContainer} from '@react-navigation/native';
+import NavigationRoute from './src/app/components/navigation';
+import BottomTap from './src/app/components/bottomTap';
+import 'react-native-gesture-handler';
 console.log(store);
 const App = () => {
   return (
     <>
-      {/* <Provider> */}
       <SafeAreaView style={styles.container}>
         <MenuBar />
         <SearchBar />
         <Text style={styles.text}>Categories</Text>
-        <ScrollView>
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              margin: 20,
-              color: 'black',
-              padding: 10,
-            }}>
-            <Text>Routing</Text>
-            <Text>Routing</Text>
-            <Text>Routing</Text>
-            <Text>Routing</Text>
-          </View>
-        </ScrollView>
         <ScrollView style={styles.image}>
           <NikeStore />
         </ScrollView>
-        <NavigationContainer>
-          <AppNavigator />
-        </NavigationContainer>
-        <Text>Hi</Text>
       </SafeAreaView>
-      {/* </Provider> */}
     </>
   );
 };
