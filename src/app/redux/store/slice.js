@@ -1,14 +1,22 @@
 import {createSlice} from '@reduxjs/toolkit';
-export const counterSlice = createSlice({
-  //  in couterSlice we have reducer and action
-  name: 'counter',
-  initialState: 0,
+
+const cartSlice = createSlice({
+  name: 'carts',
+  initialState: {products: [], total: 0},
   reducers: {
-    // increment: (state) => state + 1,
-    // decrement: (state) => state - 1,
+    addProduct(state, action) {
+      const {id, text} = action.payload;
+      state.push({id, text, completed: false});
+    },
+    removeProduct(state, action) {
+      const todo = state.find((todo) => todo.id === action.payload);
+      if (todo) {
+        todo.completed = !todo.completed;
+      }
+    },
   },
 });
 
-//  we can export reducer and action
-// export const {increment, decrement} = counterSlice.actions;
-export const {reducers} = counterSlice.reducer;
+export const {addProduct, removeProduct} = cartSlice.actions;
+
+export default cartSlice.reducer;

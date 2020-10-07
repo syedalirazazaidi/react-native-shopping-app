@@ -13,7 +13,7 @@ import SearchBar from './src/app/components/SearchBar';
 import color from './src/app/assets/Constants/colors';
 import NikeStore from './src/app/screens/NikeStore';
 import {Provider} from '@reduxjs/toolkit';
-import {store} from './src/app/redux/store/store';
+import {store} from './src/app/redux/store/configStore.js';
 import TabNavigator from './src/app/navigation/AppNavigator';
 import {NavigationContainer} from '@react-navigation/native';
 import NavigationRoute from './src/app/components/navigation';
