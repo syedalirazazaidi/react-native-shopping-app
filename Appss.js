@@ -1,20 +1,13 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
-
-import {createStore} from 'redux';
-import {Provider} from 'react-redux';
 import AppMain from './Apps';
+import {cartReducer} from './src/app/redux/store/slice';
 import {configureStore} from '@reduxjs/toolkit';
+import {Provider} from 'react-redux';
 
 const store = configureStore({
-  reducer: cartSlice.reducer,
-});
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
+  reducer: cartReducer,
 });
 
 const Appss = () => {
@@ -25,9 +18,13 @@ const Appss = () => {
           <AppMain />
         </NavigationContainer>
       </Provider>
-      {/* <Text>Appss</Text> */}
     </View>
   );
 };
 
 export default Appss;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});

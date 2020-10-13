@@ -25,11 +25,9 @@ const App = () => {
     <>
       <SafeAreaView style={styles.container}>
         <MenuBar />
-        <SearchBar />
+        {/* <SearchBar /> */}
         <Text style={styles.text}>Categories</Text>
-        <ScrollView style={styles.image}>
-          <NikeStore />
-        </ScrollView>
+        <NikeStore />
       </SafeAreaView>
     </>
   );

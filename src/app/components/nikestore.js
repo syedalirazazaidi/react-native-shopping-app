@@ -9,24 +9,28 @@ import {
 } from 'react-native';
 import color from '../assets/Constants/colors';
 import Icon from 'react-native-vector-icons/AntDesign';
-var {height, width} = Dimensions.get('window');
+import {addProduct} from '../redux/store/slice';
+import {useDispatch} from 'react-redux';
+import {SafeAreaView} from 'react-native-safe-area-context';
+
 const NikeComponent = ({item}) => {
+  const dispatch = useDispatch();
   let [click, setClick] = React.useState(false);
 
-  let [cart, addToCart] = React.useState([]);
+  // let [cart, addToCart] = React.useState([]);
   addToCart = (item) => {
-    addToCart([...cart, item]);
+    dispatch(addProduct(item));
   };
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Text style={styles.txt}>
         <Text
           style={{
             color: color.darkBlue,
             marginLeft: 20,
             paddingBottom: 40,
-            margin: 90,
+            margin: 20,
             fontSize: 15,
             marginLeft: 5,
           }}>
@@ -34,32 +38,37 @@ const NikeComponent = ({item}) => {
         </Text>
         {item.price}
         <View>
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => addToCart(console.log(item))}>
-            <Icon
-              style={{marginLeft: 60, marginTop: 10, color: 'red'}}
-              name="hearto"
-              size={23}
-            />
+          <TouchableOpacity onPress={() => addToCart(item)}>
+            <View style={styles.button}>
+              <Icon
+                style={{marginTop: 10, color: 'red'}}
+                name="hearto"
+                size={24}
+              />
+            </View>
           </TouchableOpacity>
         </View>
       </Text>
-      {/* <Text>{cart}</Text> */}
       <Image
-        style={{width: 180, height: 150, marginTop: 20}}
+        style={{width: 130, height: 140, marginTop: 20}}
         source={item.photo}
       />
       <Text style={styles.text}>{item.name}</Text>
-    </View>
+    </SafeAreaView>
   );
 };
 
 export default NikeComponent;
 const styles = StyleSheet.create({
+  button: {
+    margin: 10,
+  },
   container: {
-    borderRadius: 12,
-    // backgroundColor: color.white,
+    margin: 20,
+    borderRadius: 10,
+    marginTop: 10,
+    padding: 2,
+    backgroundColor: color.white,
     elevation: 5,
   },
   text: {

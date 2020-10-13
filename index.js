@@ -9,6 +9,5 @@ import {makeServer} from './src/app/api/mockup';
 import AppMain from './Apps';
 import Appss from './Appss';
 
-import {Provider} from 'react-redux';
 makeServer();
 AppRegistry.registerComponent(appName, () => Appss);

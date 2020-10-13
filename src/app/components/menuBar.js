@@ -1,15 +1,18 @@
 import React from 'react';
-import {StyleSheet, Image, SafeAreaView} from 'react-native';
+import {StyleSheet, Image, SafeAreaView, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
+import IconA from 'react-native-vector-icons/EvilIcons';
 import color from '../assets/Constants/colors';
+import {useDispatch, useSelector} from 'react-redux';
 export default function MenuBar() {
+  const state = useSelector((state) => state);
+  const dispatch = useDispatch();
+  const {products, total} = state;
   return (
     <SafeAreaView style={styles.container}>
       <Icon style={styles.icon} name="menu" size={30} />
-      <Image
-        style={styles.image}
-        source={require('../assets/Constants/man.png')}
-      />
+      <Text style={styles.leng}>{state.products.length}</Text>
+      <IconA style={styles.iconCart} name="cart" size={40} />
     </SafeAreaView>
   );
 }
@@ -21,6 +24,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginHorizontal: 20,
     paddingTop: 25,
+  },
+  leng: {
+    position: 'relative',
+    left: 165,
+    top: 20,
+    color: '#fff',
+    zIndex: 1,
+    backgroundColor: 'red',
+    padding: 5,
+    borderRadius: 18,
   },
   icon: {width: 30, height: 30},
   image: {

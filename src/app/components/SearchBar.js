@@ -3,9 +3,16 @@ import {StyleSheet, TextInput, View, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/EvilIcons';
 import color from '../assets/Constants/colors';
 export default function SearchBar() {
+  const [value, onChangeText] = React.useState('');
+
   return (
     <View style={styles.container}>
-      <TextInput style={styles.textInput} placeholder="Find shoes" />
+      <TextInput
+        style={styles.textInput}
+        // onChangeText={(e) => onChangeText(e.target.value)}
+        placeholder="Find shoes"
+      />
+
       <Icon style={styles.icon} name="search" size={39} />
     </View>
   );

@@ -10,7 +10,7 @@ import image9 from './Images/image9.jpg';
 export const Data = [
   {
     id: 1,
-    name: 'Buffalo - Striploin',
+    name: 'Buffalo - Striploin shop',
     price: 39.11,
     photo: image1,
     quantity: 1,
@@ -24,7 +24,7 @@ export const Data = [
   },
   {
     id: 3,
-    name: 'Wine - Gato Negro Cabernet',
+    name: 'Wine - Gato Negro Cab.',
     price: 51.01,
     photo: image3,
     quantity: 1,

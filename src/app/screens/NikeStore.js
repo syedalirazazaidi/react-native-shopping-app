@@ -1,16 +1,37 @@
 import React from 'react';
-import {Text, View, StyleSheet, SafeAreaView} from 'react-native';
+import {
+  Text,
+  View,
+  StyleSheet,
+  SafeAreaView,
+  TextInput,
+  FlatList,
+} from 'react-native';
 import NikeComponent from '../components/nikestore';
+import Icon from 'react-native-vector-icons/EvilIcons';
+import color from '../assets/Constants/colors';
+import {ScrollView} from 'react-native-gesture-handler';
+
 export default function NikeStore() {
   let [shoes, setShoes] = React.useState([]);
+  const [search, onSearch] = React.useState('');
   let fetchUsers = async () => {
     try {
       let res = await fetch('/api/shoes');
       let data = await res.json();
       setShoes(data);
+      arrayholder = data;
     } catch (error) {
       console.log(error);
     }
+  };
+  searchFilterFunction = (text) => {
+    const newData = arrayholder.filter((item) => {
+      const itemData = `${item.name.toUpperCase()} `;
+      const textData = text.toUpperCase();
+      return itemData.indexOf(textData) > -1;
+    });
+    setShoes(newData);
   };
   React.useEffect(() => {
     fetchUsers();
@@ -21,23 +42,61 @@ export default function NikeStore() {
         <Text>Loading...</Text>
       </View>
     );
-  if (shoes.length)
-    return (
-      <SafeAreaView>
-        <Text>
-          {shoes.map((item) => (
-            <Text key={item.id}>
-              <NikeComponent item={item} />
-            </Text>
-          ))}
+  return (
+    <SafeAreaView style={styles.tainer}>
+      <View style={styles.container}>
+        <TextInput
+          style={styles.textInput}
+          onChangeText={(text) => searchFilterFunction(text)}
+          placeholder="Find shoes"
+        />
+        <Icon style={styles.icon} name="search" size={39} />
+      </View>
+      <ScrollView>
+        <Text style={{marginTop: 20}}>
+          {shoes && (
+            <FlatList
+              data={shoes}
+              renderItem={({item}) => <NikeComponent item={item} />}
+              keyExtractor={(item) => item.id.toString()}
+            />
+          )}
         </Text>
-      </SafeAreaView>
-    );
+      </ScrollView>
+    </SafeAreaView>
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
-    // padding: 40,
-    // justifyContent: 'space-between',
+    marginHorizontal: 5,
+    paddingTop: 20,
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+  },
+
+  textInput: {
+    backgroundColor: color.white,
+    borderRadius: 25,
+    paddingLeft: 23,
+    width: '100%',
+    fontSize: 18,
+    padding: 15,
+    position: 'relative',
+    marginRight: 15,
+  },
+  icon: {
+    borderRadius: 25,
+    padding: 4,
+    marginTop: 10,
+    margin: -6,
+    width: 44,
+    height: 44,
+    backgroundColor: color.darkBlue,
+    position: 'absolute',
+    left: 330,
+    right: 30,
+    bottom: 13,
+    color: color.white,
   },
 });
