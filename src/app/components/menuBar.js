@@ -1,16 +1,33 @@
 import React from 'react';
-import {StyleSheet, Image, SafeAreaView, Text} from 'react-native';
+import {
+  StyleSheet,
+  Image,
+  SafeAreaView,
+  Text,
+  Alert,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import IconA from 'react-native-vector-icons/EvilIcons';
 import color from '../assets/Constants/colors';
 import {useDispatch, useSelector} from 'react-redux';
-export default function MenuBar() {
+export default function MenuBar({navigation}) {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
   const {products, total} = state;
   return (
     <SafeAreaView style={styles.container}>
-      <Icon style={styles.icon} name="menu" size={30} />
+      {/* <TouchableOpacity> */}
+      <Icon
+        // onPress={() => alert('hi')}
+        onPress={() => navigation.openDrawer('Index')}
+        // navigation.navigate('SideMenu')}
+        style={styles.icon}
+        name="menu"
+        size={30}
+      />
+      {/* </TouchableOpacity> */}
       <Text style={styles.leng}>{state.products.length}</Text>
       <IconA style={styles.iconCart} name="cart" size={40} />
     </SafeAreaView>
