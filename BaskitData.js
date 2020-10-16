@@ -29,7 +29,7 @@ const BaskitContainer = () => {
               name={item.name}
               price={item.price}
               image={item.photo}
-              onPress={onDelete(item.id)}
+              onPress={() => onDelete(item.id)}
             />
           )}
           keyExtractor={(item) => item.id.toString()}

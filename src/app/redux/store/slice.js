@@ -4,7 +4,7 @@ const cartSlice = createSlice({
   name: 'carts',
   initialState: {products: [], total: 0},
   reducers: {
-    addProduct(state, action) {
+    addProduct: (state = initialState, action) => {
       const item = action.payload;
       const {id, price} = item;
       const findProductIdx = state.products.findIndex((prod) => prod.id === id);
@@ -22,12 +22,14 @@ const cartSlice = createSlice({
       state.total += price;
     },
 
-    removeProduct(state = initialState, action) {
-      // const id = action.payload;
-      // console.log(state.products, 'IDEB');
-      // const newData = state.filter((m) => m.id !== id).length > 0;
-      // console.log('New Data', newData);
-      // return newData;
+    removeProduct: (state, action) => {
+      const id = action.payload;
+
+      // return {products: state.products.filter((m) => m.id !== id).length > 0};
+      console.log(state, 'UUUUUUUUUUU');
+      return {products: state.products.filter((m) => m.id !== id)};
+      // return stateNew;
+      // return state;
       // console.log('ID: ', action.payload);
       // const findProductIdx = state.products.findIndex((prod) => prod.id === id);
       // if (findProductIdx !== -1) {
