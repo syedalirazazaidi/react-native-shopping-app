@@ -3,7 +3,7 @@
 // import {NavigationContainer} from '@react-navigation/native';
 // import {createStackNavigator} from '@react-navigation/stack';
 // import TabNavigator from './src/app/navigation/AppNavigator';
-import App from './App';
+import AppStack from './App';
 // const styles = StyleSheet.create({
 //   container: {
 //     flex: 1,
@@ -47,7 +47,7 @@ function AppMain() {
       }}>
       <Tab.Screen
         name="Home"
-        component={App}
+        component={AppStack}
         options={{
           tabBarLabel: 'Home',
           tabBarIcon: ({color, size}) => (

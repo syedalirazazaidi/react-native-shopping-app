@@ -3,6 +3,7 @@ import {View, Text, StyleSheet} from 'react-native';
 import MenuBar from './src/app/components/menuBar';
 import BaskitContainer from './BaskitData';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import CheckOut from './BaskitCheck';
 
 const styles = StyleSheet.create({
   container: {
@@ -28,13 +29,17 @@ const styles = StyleSheet.create({
 const Baskit = () => {
   return (
     <View>
-      <MenuBar />
+      {/* <MenuBar /> */}
       <View style={styles.container}>
         <Text style={styles.bag}>My Bag</Text>
         <Text style={styles.bagShoe}>Check And Pay Your Shoes</Text>
       </View>
       <View style={styles.baskit}>
         <BaskitContainer />
+      </View>
+      <View>
+        <CheckOut />
+        {/* <Text>hi</Text> */}
       </View>
     </View>
   );

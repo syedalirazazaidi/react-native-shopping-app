@@ -61,7 +61,7 @@ const NikeComponent = ({item}) => {
 export default NikeComponent;
 const styles = StyleSheet.create({
   button: {
-    margin: 10,
+    marginLeft: 40,
   },
   container: {
     margin: 20,

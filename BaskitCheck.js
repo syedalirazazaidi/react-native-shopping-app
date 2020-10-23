@@ -7,12 +7,12 @@ const styles = StyleSheet.create({
   },
 });
 
-const Profile = () => {
+const CheckOut = () => {
   return (
     <View style={styles.container}>
-      <Text> This is the First Page under First Page Option</Text>
+      <Text>CheckOut</Text>
     </View>
   );
 };
 
-export default Profile;
+export default CheckOut;

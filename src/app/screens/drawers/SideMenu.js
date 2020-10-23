@@ -12,12 +12,13 @@ const styles = StyleSheet.create({
   },
 });
 
-const SideMenu = ({...props}) => {
+const SideMenu = (props) => {
   return (
     <DrawerContentScrollView {...props}>
+      <DrawerItemList {...props} />
       <DrawerItem
         // icon = { ()=> ( <Icon name="home-outline" style={{fontSize:2.8*vh,color:'grey'}} />  ) }
-        // label="Home"
+        label="Home"
         onPress={() => {
           props.navigation.navigate('Profile');
         }}

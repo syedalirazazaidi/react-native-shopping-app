@@ -6,23 +6,30 @@ import {
   SafeAreaView,
   TextInput,
   FlatList,
+  ActivityIndicator,
+  ScrollView,
 } from 'react-native';
 import NikeComponent from '../components/nikestore';
 import Icon from 'react-native-vector-icons/EvilIcons';
 import color from '../assets/Constants/colors';
-import {ScrollView} from 'react-native-gesture-handler';
+// import {ScrollView} from 'react-native-gesture-handler';
 
 export default function NikeStore() {
   let [shoes, setShoes] = React.useState([]);
   const [search, onSearch] = React.useState('');
+  const [loading, onLoading] = React.useState(false);
+  const [error, onError] = React.useState(null);
   let fetchUsers = async () => {
     try {
       let res = await fetch('/api/shoes');
       let data = await res.json();
       setShoes(data);
-      arrayholder = data;
+      onError(error || null);
+      onLoading(false), (arrayholder = data);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
+      onError(error);
+      onLoading(false);
     }
   };
   searchFilterFunction = (text) => {
@@ -39,7 +46,7 @@ export default function NikeStore() {
   if (!shoes.length)
     return (
       <View>
-        <Text>Loading...</Text>
+        <ActivityIndicator size="large" color="#0000ff" />
       </View>
     );
   return (
@@ -48,6 +55,7 @@ export default function NikeStore() {
         <TextInput
           style={styles.textInput}
           onChangeText={(text) => searchFilterFunction(text)}
+          autoCorrect={false}
           placeholder="Find shoes"
         />
         <Icon style={styles.icon} name="search" size={39} />
